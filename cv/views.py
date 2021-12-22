@@ -1,7 +1,6 @@
 import json
 import os
 from django.shortcuts import render
-from personal_portfolio import settings
 
 # main index view
 def index(request):

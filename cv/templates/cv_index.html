@@ -73,10 +73,10 @@
 		{% endif %}
 		<div class="person animated bounceInDown" itemscope itemtype="http://schema.org/Person">
 			<div class="avatar">
-				<img itemprop="image" src="{{avatar.large}}" srcset="{{avatar.small}} 480w, {{avatar.large}} 1080w" sizes="50vw" alt="Avatar of {{name}} {{surname}}"/>
+				<img itemprop="image" src="{{avatar}}"  width="30%">
 			</div>
 			<div class="content">
-				<h1 class="title" itemprop="name">{{name}}<br/>{{surname}}</h1>
+				<h1 class="title" itemprop="name">{{name}}{{surname}}</h1>
 				{% if role %}
 				<p itemprop="jobTitle">
 					{{role}}
@@ -85,7 +85,7 @@
 				{% if social.enabled %}
 				<ul class="social-icons">
 					{% for link in social.data %}
-					<li><a class="social" href="{{link.url}}" title="{{link.name}}" {{target}}><i class="fab {{link.faicon}}"></i></a></li>
+					<li><a class="social" href="{{link.url}}" target="_blank" title="{{link.name}}" {{target}}><i class="fab {{link.faicon}}"></i></a></li>
 					{% endfor %}
 				</ul>
 				{% endif %}
@@ -98,7 +98,7 @@
 				</p>
 				{% endif %}
 				{% if email.address %}
-				<p>{{email.question}} <a href="mailto:{{email.address.name}}@{{email.address.domain}}{% if email.tag %}?subject=[{{email.tag}}]{% endif %}">Email me</a>.</p>
+				<p>{{email.question}} <a href="mailto:{{email.address.name}}@{{email.address.domain}}{% if email.tag %}?subject=[{{email.tag}}]{% endif %}">Sent me an email!</a></p>
 				{% endif %}
 			</div>
 		</div>
