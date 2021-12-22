@@ -2,11 +2,4 @@
 __pycache__/
 *.py[cod]
 env/
-sql/
-
-*.json
-*.xlsx
 *.pyc
-*.pkl
-*.cprof
-test.py
