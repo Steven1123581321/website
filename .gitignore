@@ -5,3 +5,9 @@ env/
 *.pyc
 *.sqlite3
 *.png
+*.docx
+*/migrations/
+*/static/admin/css/
+*/templates
+*.css
+*.json
