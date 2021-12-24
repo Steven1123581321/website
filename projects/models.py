@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 # For our projects, we only need one table to store our different projects.
 
+
 class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
