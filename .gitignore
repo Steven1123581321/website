@@ -11,3 +11,4 @@ env/
 */templates
 *.css
 *.json
+.static/
