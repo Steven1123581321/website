@@ -1,29 +1,66 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<link rel="stylesheet" href="/static/css/wrappers_portfolio.css">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<div class="card text-center">
+  <div class="card-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <style> nav {
+              font-family: 'Roboto Mono', monospace;
+            }
+            </style>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'cv_index' %}">Home</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'project_index' %}">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog_index' %}">Blog</a>
-            </li>
-          </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'cv_index' %}">Home</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'project_index' %}">Projects</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'blog_index' %}">Blog</a>
+                </li>
+              </ul>
+            </div>
+            <div class="dark-mode-toggler">
+              <input type="checkbox" id="toggler" />
+              <label for="toggler" aria-label="Toggler for Dark Mode" onclick="setModeEventListener()"></label>
+            </div>
+            <form class="form-inline my-2 my-lg-0" role="search" id="form">
+              <input class="form-control mr-sm-2" type="search" id="query" name="q" placeholder="Search Google" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <script>
+              const f = document.getElementById('form');
+              const q = document.getElementById('query');
+              const google = 'https://www.google.com/search?q=';
+        
+              function submitted(event) {
+                event.preventDefault();
+                const url = google + q.value;
+                const win = window.open(url, '_blank');
+                win.focus();
+              }
+        
+              f.addEventListener('submit', submitted);
+            </script>
+            <script>
+            function setModeEventListener() {
+              let list = document.body.classList;
+              document.getElementById("toggler").addEventListener("change", (event) => {
+                  event.target.checked ? list.add("dark-mode") : list.remove("dark-mode");
+              });
+            }
+            </script>
         </div>
-    </div>
-
-</nav>
-
+    </nav>
+  </div>
+</div>
 <div class="container">
     {% block page_content %}{% endblock %}
 </div>

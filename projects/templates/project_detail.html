@@ -1,18 +1,23 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block page_content %}
-<h1>{{ project.title }}</h1>
-<div class="row">
-    <div class="col-md-8">
-        <img src="{% static project.image %}" alt="" width="100%">
-    </div>
-    <div class="col-md-4">
-        <h5>About the project:</h5>
-        <p>{{ project.description }}</p>
-        <br>
-        <h5>Technology used:</h5>
-        <p>{{ project.technology }}</p>
+<div class="go-home">
+    <a href="http://127.0.0.1:8000/" style="color:#e9bc3f" >Home</a>
+</div>
+<link rel="stylesheet" href="/static/css/wrappers_projects.css">
+<div class="bc">
+    <h1>{{ project.title }}</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <img src="{% static project.image %}" alt="" width="100%">
+        </div>
+        <div class="col-md-4">
+            <h5>About the project:</h5>
+            <p>{{ project.description }}</p>
+            <br>
+            <h5>Technology used:</h5>
+            <p>{{ project.technology }}</p>
+        </div>
     </div>
 </div>
 {% endblock %}
