@@ -1,34 +1,141 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
-<link rel="stylesheet" href="/static/css/wrappers.css">
-<html lang="en">
-    <body>
-        {% for c in cv %}
-            {% comment %} <div class="animated bounceInUp"> {% endcomment %}
-                <img src="{% static c.avatar %}" class="rounded-circle float-right" width="15%">
-            {% comment %} </div><br> {% endcomment %}
-            <div id="wrapper">
-                <div class="animated bounceInUp">
-                <div class="card-text" style="">
-                        <div class="card-body">
-                            <h5 class="card-title">{{c.Name}} {{c.Surname}}</h5>
-                            <p class="card-text">{{ c.role }}</p><br>
-                            <ul>
-                                <li><a href="{{c.github}}" class="fab fa-github" style="font-size:15px;color:black" target="_blank" title="Github"></i> Github page</a></li>
-                                <li><a href="{{c.linkedin}}" class="fab fa-Linkedin" style="font-size:15px;color:black" target="_blank" title="Linkedin"></i> Linkedin</a></li>
-                                <li><a href="{{c.research_gate}}" class="fab fa-researchgate" style="font-size:15px;color:black" target="_blank" title="ResearchGate"></i> ResearchGate</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Homepage </title>
+    <style>
+    {% comment %} .bc {
+            position: relative;
+          }
+          
+    .bc::before {    
+            content: "";
+            background: url('static/img/background1.jpg') no-repeat center center;
+            background-size: cover;
+            background-size:100% 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 0.20;
+          } 
+           {% endcomment %}
+     {% comment %} nav {
+        font-family: 'Roboto Mono', monospace;
+      } {% endcomment %}
+
+    {% comment %} body {
+        background: url('static/img/background1.jpg') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        color: #000;
+        font-family: 'Roboto Mono', monospace;
+        opacity: 0.8;
+        position: relative;
+    } {% endcomment %}
+      
+    {% comment %} body {
+        font-family: 'Roboto Mono', monospace;
+    } {% endcomment %}
+{% comment %} 
+    body::after {
+        opacity: 0.9;
+        background: url('static/img/background1.jpg') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    } {% endcomment %}
+    body::before {
+        content: '';
+        background: url('static/img/background1.jpg') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        opacity: 0.1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+      
+    body {
+        color: #000;
+        font-family: 'Roboto Mono', monospace;
+    }
+
+    #wrapperimage {
+        position: absolute;
+        top: 82;
+        right: 0;
+    }
+      
+    .text {
+        padding-right: 350px;
+        position: absolute;
+    }
+    
+    .animated, .bounceInUp {
+        animation-duration: 2s;
+        animation-name: bounceInUp;
+    }
+    
+    @keyframes bounceInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(2000px);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-10px);
+    }
+    80% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+    }
+    </style>
+    {% comment %} <link rel="stylesheet" href="/static/css/wrappers.css"> {% endcomment %}
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Steven Pauly, inventory, optimization, operations research, HTML, CSS, JavaScript">
+    <meta name="description" content="Content on math and operations research">
+    <meta name="author" content="Steven Pauly">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <div class="bc" class="bg-image shadow-2-strong"> {% endcomment %}
+</head>
+<body>
+    {% for c in cv %}
+        <div class="text">
             <h1>{{ c.welcome_title }}</h1>
             <p>{{ c.welcome_text | linebreaks }}</p>
             <br>
             <p>{{email.question}} <a href="mailto:{{email.address.name}}@{{email.address.domain}}{% if email.tag %}?subject=[{{email.tag}}]{% endif %}">Sent me an email!</a></p>
-        {% endfor %}
-    </body>
-</html>
+        </div>
+        <div class="card" style="width: 18rem;" id="wrapperimage">
+            <img src="{% static c.avatar %}" class="rounded-circle float-right" width="55%" alt="Responsive image">
+            <div class="animated bounceInUp">
+                <div class="card-body">
+                    <h5 class="card-title">{{c.Name}} {{c.Surname}}</h5>
+                    <p class="card-text">{{ c.role }}</p><br>
+                    <ul>
+                        <li><a href="{{c.github}}" class="fab fa-github" style="font-size:15px;color:black" target="_blank" title="Github"></i> Github page</a></li>
+                        <li><a href="{{c.linkedin}}" class="fab fa-Linkedin" style="font-size:15px;color:black" target="_blank" title="Linkedin"></i> Linkedin</a></li>
+                        <li><a href="{{c.research_gate}}" class="fab fa-researchgate" style="font-size:15px;color:black" target="_blank" title="ResearchGate"></i> ResearchGate</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</body>
+{% endfor %}
 {% endblock %}
+</html>
