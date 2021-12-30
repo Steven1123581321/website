@@ -7,8 +7,5 @@ env/
 *.png
 *.docx
 */migrations/
-*/static/admin/css/
-*/templates
-*.css
 *.json
-.static/
+*/static/
