@@ -6,51 +6,6 @@
 <head>
     <title> Homepage </title>
     <style>
-    {% comment %} .bc {
-            position: relative;
-          }
-          
-    .bc::before {    
-            content: "";
-            background: url('static/img/background1.jpg') no-repeat center center;
-            background-size: cover;
-            background-size:100% 100%;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            opacity: 0.20;
-          } 
-           {% endcomment %}
-     {% comment %} nav {
-        font-family: 'Roboto Mono', monospace;
-      } {% endcomment %}
-
-    {% comment %} body {
-        background: url('static/img/background1.jpg') no-repeat center center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        color: #000;
-        font-family: 'Roboto Mono', monospace;
-        opacity: 0.8;
-        position: relative;
-    } {% endcomment %}
-      
-    {% comment %} body {
-        font-family: 'Roboto Mono', monospace;
-    } {% endcomment %}
-{% comment %} 
-    body::after {
-        opacity: 0.9;
-        background: url('static/img/background1.jpg') no-repeat center center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    } {% endcomment %}
     body::before {
         content: '';
         background: url('static/img/background1.jpg') no-repeat center center;
@@ -58,7 +13,7 @@
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        opacity: 0.1;
+        opacity: 0.2;
         position: fixed;
         top: 0;
         left: 0;
@@ -70,11 +25,21 @@
     body {
         color: #000;
         font-family: 'Roboto Mono', monospace;
+        width: 100vw;
+        min-height: 100vh;
+        opacity: 0.99;
     }
 
     #wrapperimage {
         position: absolute;
-        top: 82;
+        top: 45;
+        right: 50;
+        border: none;
+    }
+
+    #wrappertext {
+        position: fixed;
+        top: 250;
         right: 0;
     }
       
@@ -104,14 +69,16 @@
         transform: translateY(0);
     }
     }
+
+    .cardstyle {
+        opacity: 0.85;
+    }
     </style>
-    {% comment %} <link rel="stylesheet" href="/static/css/wrappers.css"> {% endcomment %}
     <meta charset="UTF-8">
     <meta name="keywords" content="Steven Pauly, inventory, optimization, operations research, HTML, CSS, JavaScript">
     <meta name="description" content="Content on math and operations research">
     <meta name="author" content="Steven Pauly">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% comment %} <div class="bc" class="bg-image shadow-2-strong"> {% endcomment %}
 </head>
 <body>
     {% for c in cv %}
@@ -122,9 +89,10 @@
             <p>{{email.question}} <a href="mailto:{{email.address.name}}@{{email.address.domain}}{% if email.tag %}?subject=[{{email.tag}}]{% endif %}">Sent me an email!</a></p>
         </div>
         <div class="card" style="width: 18rem;" id="wrapperimage">
-            <img src="{% static c.avatar %}" class="rounded-circle float-right" width="55%" alt="Responsive image">
+            <img src="{% static c.avatar %}" id="wrapperimage" class="rounded-circle float-right img-fluid" width="55%" alt="Responsive image">
+        <div class="cardstyle" style="width: 18rem;" id="wrappertext">
             <div class="animated bounceInUp">
-                <div class="card-body">
+                <div class="card-body" id="float-right">
                     <h5 class="card-title">{{c.Name}} {{c.Surname}}</h5>
                     <p class="card-text">{{ c.role }}</p><br>
                     <ul>
