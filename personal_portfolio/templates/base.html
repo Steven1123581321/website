@@ -14,6 +14,76 @@
               }
               .form-inline{
                 display: none;
+              }       
+              .dark-mode-toggler {
+                position: fixed;
+                top: 5px;
+                right: 20px;
+              }
+              .dark-mode-toggler label {
+                position: relative;
+              }
+              .dark-mode-toggler input[type='checkbox'] {
+                display: none;
+              }
+              .dark-mode-toggler input[type='checkbox'] + label::before {
+                content: '';
+                display: block;
+                height: 26px;
+                width: 60px;
+                background: #fff;
+                border: 2px solid #96979c;
+                border-radius: 15px;
+                position: absolute;
+                top: 0px;
+                left: -65px;
+              }
+              .dark-mode-toggler input[type='checkbox'] + label::after {
+                content: '';
+                display: block;
+                height: 20px;
+                width: 20px;
+                background: #96979c;
+                border: 2px solid #fff;
+                border-radius: 50%;
+                position: absolute;
+                top: 3px;
+                left: -62px;
+                transition: all 0.4s ease-in;
+              }
+              .dark-mode-toggler input[type='checkbox']:checked + label::before {
+                background: #000;
+                border: 2px solid #fff;
+              }
+              .dark-mode-toggler input[type='checkbox']:checked + label::after {
+                left: -28px;
+                background: #000;
+                border: 2px solid #fff;
+                transition: all 0.4s ease-in;
+              }
+              :root {
+                --clr-light: transparent;
+                --clr-dark: #00332a;
+                --clr-primary: #dbffa2;
+                --clr-secondary: #c3fcf2;
+                --clr-accent: #ff7750;
+              
+                --foreground: var(--clr-dark);
+                --background: var(--clr-light);
+              }
+              .darkmode {
+                --clr-light: #fdffc4;
+                --clr-dark: #00332a;
+                --clr-primary: #202302;
+                --clr-secondary: #00100d;
+                --clr-accent: #ff7750;
+              
+                --foreground: var(--clr-light);
+                --background: var(--clr-dark);
+              }
+              body {
+                background: var(--background);
+                color: var(--foreground);
               }
             </style>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -58,6 +128,50 @@
                 </button>
               </div>
             </div>
+            <div class="dark-mode-toggler">
+              <input type="checkbox" id="dark-mode-toggler" />
+              <label for="dark-mode-toggler" aria-label="Toggler for Dark Mode"></label>
+            </div>
+            <script>
+              // check for saved 'darkMode' in localStorage
+              let darkMode = localStorage.getItem('darkMode'); 
+
+              const darkModeToggle = document.querySelector('#dark-mode-toggler');
+
+              const enableDarkMode = () => {
+                // 1. Add the class to the body
+                document.body.classList.add('darkmode');
+                // 2. Update darkMode in localStorage
+                localStorage.setItem('darkMode', 'enabled');
+              }
+
+              const disableDarkMode = () => {
+                // 1. Remove the class from the body
+                document.body.classList.remove('darkmode');
+                // 2. Update darkMode in localStorage 
+                localStorage.setItem('darkMode', null);
+              }
+              
+              // If the user already visited and enabled darkMode
+              // start things off with it on
+              if (darkMode === 'enabled') {
+                enableDarkMode();
+              }
+
+              // When someone clicks the button
+              darkModeToggle.addEventListener('click', () => {
+                // get their darkMode setting
+                darkMode = localStorage.getItem('darkMode'); 
+                
+                // if it not current enabled, enable it
+                if (darkMode !== 'enabled') {
+                  enableDarkMode();
+                // if it has been enabled, turn it off  
+                } else {  
+                  disableDarkMode(); 
+                }
+              });
+            </script>
             <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
             <script  type="text/javascript">
             $(document).ready(function () {
