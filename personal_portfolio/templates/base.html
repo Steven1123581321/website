@@ -14,52 +14,12 @@
               }
               .form-inline{
                 display: none;
-              }       
-              .dark-mode-toggler {
-                position: fixed;
-                top: 5px;
-                right: 20px;
-              }
-              .dark-mode-toggler label {
-                position: relative;
-              }
-              .dark-mode-toggler input[type='checkbox'] {
-                display: none;
-              }
-              .dark-mode-toggler input[type='checkbox'] + label::before {
-                content: '';
-                display: block;
-                height: 26px;
-                width: 60px;
-                background: #fff;
-                border: 2px solid #96979c;
-                border-radius: 15px;
+              }    
+              .avatar {
                 position: absolute;
                 top: 0px;
-                left: -65px;
-              }
-              .dark-mode-toggler input[type='checkbox'] + label::after {
-                content: '';
-                display: block;
-                height: 20px;
-                width: 20px;
-                background: #96979c;
-                border: 2px solid #fff;
-                border-radius: 50%;
-                position: absolute;
-                top: 3px;
-                left: -62px;
-                transition: all 0.4s ease-in;
-              }
-              .dark-mode-toggler input[type='checkbox']:checked + label::before {
-                background: #000;
-                border: 2px solid #fff;
-              }
-              .dark-mode-toggler input[type='checkbox']:checked + label::after {
-                left: -28px;
-                background: #000;
-                border: 2px solid #fff;
-                transition: all 0.4s ease-in;
+                right: 0px;
+                font-size: 60%;
               }
               :root {
                 --clr-light: transparent;
@@ -128,15 +88,18 @@
                 </button>
               </div>
             </div>
-            <div class="dark-mode-toggler">
-              <input type="checkbox" id="dark-mode-toggler" />
-              <label for="dark-mode-toggler" aria-label="Toggler for Dark Mode"></label>
-            </div>
+            <a href="/">
+              <div class="avatar">
+                <a style="cursor:pointer;">
+                <span class="icon" id="toggle-switch"> <i class="fas fa-sun fa-2x hd"></i></span><br />
+                </a>
+              </div>
+            </a>
             <script>
               // check for saved 'darkMode' in localStorage
-              let darkMode = localStorage.getItem('darkMode'); 
+              let darkMode = localStorage.getItem('darkMode');
 
-              const darkModeToggle = document.querySelector('#dark-mode-toggler');
+              const darkModeToggle = document.querySelector('#toggle-switch');
 
               const enableDarkMode = () => {
                 // 1. Add the class to the body
@@ -148,7 +111,7 @@
               const disableDarkMode = () => {
                 // 1. Remove the class from the body
                 document.body.classList.remove('darkmode');
-                // 2. Update darkMode in localStorage 
+                // 2. Update darkMode and toggle in localStorage 
                 localStorage.setItem('darkMode', null);
               }
               
@@ -156,12 +119,14 @@
               // start things off with it on
               if (darkMode === 'enabled') {
                 enableDarkMode();
+                // 3. toggle the checkbox
+                darkModeToggle.setAttribute('checked', true);
               }
 
               // When someone clicks the button
               darkModeToggle.addEventListener('click', () => {
                 // get their darkMode setting
-                darkMode = localStorage.getItem('darkMode'); 
+                darkMode = localStorage.getItem('darkMode');
                 
                 // if it not current enabled, enable it
                 if (darkMode !== 'enabled') {
