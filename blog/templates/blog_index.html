@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block page_content %}
 <link rel="stylesheet" href="/static/css/wrappers_blog.css">
+<form class="d-flex" method=POST action="{% url "blog_search" %}">
+    {% csrf_token %}
+    <input class="form-control me-2" type="search" placeholder="Search a blog" aria-label="Search" name="searched_blog">
+    <button class="btn btn-outline-secondary" type="submit">Search </button>
+</form>
 <div class="go-home">
     <a href="http://127.0.0.1:8000/" style="color:#e9bc3f" >Home</a>
 </div>
