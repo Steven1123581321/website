@@ -5,9 +5,15 @@
     {% if searched_blog%}
         <h1> You searched for...{{searched_blog}}</h1>
         <br/>
-        {% for blog in blogs%}
-            <a href="{% url "blog_detail" blog.id %}">{{ blog }} </a></br>
+        {% if blogs %}
+            {% for blog in blogs%}
+                <a href="{% url "blog_detail" blog.id %}">{{ blog }} </a></br>
+            {% endfor %}
+        {% else %}
+        {% for blogbody in blogsbody%}
+            <a href="{% url "blog_detail" blogbody.id %}">{{ blogbody }} </a></br>
         {% endfor %}
+        {% endif %}
     {% else %}
         <h1> You forgot to enter a search keyword </h1>
     {% endif %}
