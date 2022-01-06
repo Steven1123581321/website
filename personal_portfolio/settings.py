@@ -37,7 +37,11 @@ INSTALLED_APPS = [
     "projects",
     "blog",
     "cv",
+    "ckeditor",
+    "ckeditor_uploader",
 ]
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -80,7 +84,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -118,3 +121,6 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = "media"

@@ -44,7 +44,12 @@ def search_blogs(request):
     if request.method == "POST":
         searched_blog = request.POST["searched_blog"]
         blogs = Post.objects.filter(title__contains=searched_blog)
-        context = {"searched_blog": searched_blog, "blogs": blogs}
+        blogsbody = Post.objects.filter(body__contains=searched_blog)
+        context = {
+            "searched_blog": searched_blog,
+            "blogs": blogs,
+            "blogsbody": blogsbody,
+        }
         return render(request, "search_blogs.html", context)
     else:
         context = {}
