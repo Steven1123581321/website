@@ -8,4 +8,4 @@ env/
 *.docx
 */migrations/
 *.json
-*/static/
+*static/

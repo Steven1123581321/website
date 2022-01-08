@@ -43,6 +43,26 @@ INSTALLED_APPS = [
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": "full",
+        # Class used inside span to render mathematical formulae using latex
+        "mathJaxClass": "mathjax-latex",
+        # Mathjax library link to be used to render mathematical formulae
+        "mathJaxLib": "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_SVG",
+        "extraPlugins": ",".join(
+            [
+                "mathjax",
+                "widget",
+                "lineutils",
+                "dialog",
+                "clipboard",
+                "codesnippet"
+            ]
+        ),
+    },
+}
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -116,11 +136,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = "static"
+
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = "media"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

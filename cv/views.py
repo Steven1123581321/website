@@ -9,7 +9,7 @@ def index(request):
     # with open(file_path) as f:
     #     configuration = json.loads(f.read())
     # return render(request, "cv_index.html", configuration)
-    file_path = "./cv/static/configuration/configuration.json"
+    file_path = "./cv/configuration/configuration.json"
     with open(file_path) as f:
         configuration = json.loads(f.read())
     cv = Cv2.objects.all()
