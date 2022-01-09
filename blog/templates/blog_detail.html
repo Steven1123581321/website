@@ -25,7 +25,7 @@
     {% if post.header_image %}
         <img src="{{ post.header_image.url}}">
     {% endif %}
-    <p>{{ post.body | safe | linebreaks }}</p>
+    <p>{{ post.body | safe }}</p>
     <h3>Leave a comment:</h3>
     <form action="/blog/{{ post.pk }}/" method="post">
         {% csrf_token %}

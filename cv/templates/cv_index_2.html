@@ -37,14 +37,13 @@
     }
 
     #wrappertext {
-        position: fixed;
+        position: absolute;
         top: 250;
         right: 0;
     }
       
     .text {
         padding-right: 350px;
-        position: absolute;
     }
     
     .animated, .bounceInUp {
@@ -83,9 +82,9 @@
     {% for c in cv %}
         <div class="text">
             <h1>{{ c.welcome_title }}</h1>
-            <p>{{ c.welcome_text | linebreaks }}</p>
-            <br>
+            <p>{{ c.welcome_text | safe | linebreaks }}</p>
             <p>{{email.question}} <a href="mailto:{{email.address.name}}@{{email.address.domain}}{% if email.tag %}?subject=[{{email.tag}}]{% endif %}">Sent me an email!</a></p>
+            <p>{{ c.video | safe }}</p>
         </div>
         <div class="card" style="width: 18rem;" id="wrapperimage">
             <img src="{% static c.avatar %}" id="wrapperimage" class="rounded-circle float-right img-fluid" width="55%" alt="Responsive image">

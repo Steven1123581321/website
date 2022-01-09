@@ -51,17 +51,12 @@ CKEDITOR_CONFIGS = {
         # Mathjax library link to be used to render mathematical formulae
         "mathJaxLib": "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_SVG",
         "extraPlugins": ",".join(
-            [
-                "mathjax",
-                "widget",
-                "lineutils",
-                "dialog",
-                "clipboard",
-                "codesnippet"
-            ]
+            ["mathjax", "widget", "lineutils", "dialog", "clipboard", "codesnippet"]
         ),
     },
+    "cv": {"toolbar": "full", "extraPlugins": "youtube"},
 }
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
