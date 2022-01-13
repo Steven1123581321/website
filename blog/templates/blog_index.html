@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% load static %}
 {% block page_content %}
-<link rel="stylesheet" href="/static/css/wrappers_blog.css">
+<link rel="stylesheet" href="{% static "/css/blog.css" %}">
 <form class="d-flex" method=POST action="{% url "blog_search" %}">
     {% csrf_token %}
     <input class="form-control me-2" type="search" placeholder="Search a blog" aria-label="Search" name="searched_blog">

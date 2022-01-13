@@ -6,7 +6,7 @@ from cv.models import Cv2
 
 
 class CvAdmin(admin.ModelAdmin):
-    fields = ["welcome_title", "welcome_text", "video"]
+    pass
 
 
 admin.site.register(Cv2, CvAdmin)
