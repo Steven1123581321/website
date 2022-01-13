@@ -2,124 +2,40 @@
 {% load static %}
 {% block page_content %}
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>{{name}} {{surname}}</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta property="og:title" content="{{name}} {{surname}}"/>
-		<meta property="og:image" content="{{avatar}}"/>
-		<meta property="og:description" content="Personal profile page of {{name}} {{surname}}, {{role}}."/>
-		<meta property="og:url" content="{{baseurl}}" />
-		<link rel="stylesheet" href="{% static 'css/style.css' %}">
-		<script async src="{{dataurl}}" type="text/javascript"></script>
-		<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		{% if stats.enabled %}
-		<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		ga('create', '{{stats.analytics}}', 'auto');
-		ga('send', 'pageview');
-		</script>
-		{% if stats.privacypolicy.enabled %}
-		<script async src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-		<script defer src="{% static 'js/jquery.cookiesdirective.js' %}"></script>
-		{% endif %}
-		{% endif %}
-		{% if social.enabled %}
-		<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
-		{% endif %}
-		<style>
-		html {
-			background-color: {{colors.background}};
-			color: {{colors.text}};
-		}
-		a {
-			color: {{colors.links}};
-		}
-		div#fork {
-			position: absolute;
-			top: 0;
-			right: 0;
-		}
-		img#fork {
-			max-width: 150px;
-		}
-		{% if stats.enabled and stats.privacypolicy.enabled %}
-		a.privacypolicy {
-			color: {{stats.privacypolicy.linkcolor}};
-		}
-		{% endif %}
-		{% if social.enabled %}
-		.social-icons {
-			font-size: 20px;
-		}
-		.social {
-			width: 20px;
-			height: 20px;
-		}
-		a.social {
-			display: inline;
-		}
-		{% endif %}
-		</style>
-	</head>
-	<body>
-		{% if fork.enabled %}
-		<div id="fork">
-			<a href="{{fork.url}}"><img id="fork" src="{% static 'img/fork-large.png' %}" srcset="{% static 'img/fork-small.png' %} 480w, {% static 'img/fork-large.png' %} 1080w" sizes="50vw" alt="{{fork.text}}"/></a>
-		</div>
-		{% endif %}
-		<div class="person animated bounceInDown" itemscope itemtype="http://schema.org/Person">
-			<div class="avatar">
-				<img itemprop="image" src="{{avatar}}"  width="30%">
-			</div>
-			<div class="content">
-				<h1 class="title" itemprop="name">{{name}}{{surname}}</h1>
-				{% if role %}
-				<p itemprop="jobTitle">
-					{{role}}
-				</p>
-				{% endif %}
-				{% if social.enabled %}
-				<ul class="social-icons">
-					{% for link in social.data %}
-					<li><a class="social" href="{{link.url}}" target="_blank" title="{{link.name}}" {{target}}><i class="fab {{link.faicon}}"></i></a></li>
-					{% endfor %}
-				</ul>
-				{% endif %}
-				{% if links.enabled %}
-				<p>
-					{{links.title}}<br>
-					{% for link in links.list %}
-					<a href="{{link.url}}">{{link.name}}</a><br>
-					{% endfor %}
-				</p>
-				{% endif %}
-				{% if email.address %}
-				<p>{{email.question}} <a href="mailto:{{email.address.name}}@{{email.address.domain}}{% if email.tag %}?subject=[{{email.tag}}]{% endif %}">Sent me an email!</a></p>
-				{% endif %}
-			</div>
-		</div>
-		{% if stats.privacypolicy.enabled %}
-		<script defer type="text/javascript">
-		$(document).ready(function() {
-			$.cookiesDirective({
-				{% if stats.privacypolicy.link %}
-				privacyPolicyUri: '{{stats.privacypolicy.link}}',
-				{% endif %}
-				message: 'This website makes use of Google Analytics to place cookies on your computer. By surfing the website, we\'ll assume that you accept to receive all cookies from this website.<br/>If you would like to change your preferences you may follow the <a class="privacypolicy" href="http://www.aboutcookies.org/Default.aspx?page=1" target="_new">relative instructions</a>.',
-				explicitConsent: true,
-				position : 'bottom',
-				duration: {{stats.privacypolicy.duration}},
-				cookieScripts: 'Google Analytics', 
-				backgroundColor: '{{colors.text}}',
-				linkColor: '{{stats.privacypolicy.linkcolor}}'
-			});
-		});
-		</script>
-		{% endif %}
-	</body>
-</html>
+<html>
+<head>
+    <title> Homepage </title>
+    <link rel="stylesheet" type="text/css" href="{% static "/css/cv.css" %}">
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Steven Pauly, inventory, optimization, operations research, HTML, CSS, JavaScript">
+    <meta name="description" content="Content on math and operations research">
+    <meta name="author" content="Steven Pauly">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    {% for c in cv %}
+        <div class="text">
+            <h1>{{ c.welcome_title }}</h1>
+            <p>{{ c.welcome_text | safe | linebreaks }}</p>
+            <p>Do you have a question?<a href="mailto:s.pauly@slimstock.com"> Sent me an email!</a></p>
+            <p>{{ c.video | safe }}</p>
+        </div>
+        <div class="card" style="width: 18rem;" id="wrapperimage">
+            <img src="{% static "/images/cv/avatar.png" %}" id="wrapperimage" class="rounded-circle float-right img-fluid" width="55%" alt="Responsive image">
+        <div class="cardstyle" style="width: 18rem;" id="wrappertext">
+            <div class="animated bounceInUp">
+                <div class="card-body" id="float-right">
+                    <h5 class="card-title">Steven Pauly</h5>
+                    <p class="card-text">Research Scientist</p><br>
+                    <ul>
+                        <li><a href="https://github.com/Steven1123581321" class="fab fa-github" style="font-size:15px" target="_blank" title="Github"></i> Github page</a></li>
+                        <li><a href="https://linkedin.com/in/steven-pauly-80760b48" class="fab fa-Linkedin" style="font-size:15px" target="_blank" title="Linkedin"></i> Linkedin</a></li>
+                        <li><a href="https://www.researchgate.net/profile/Steven-Pauly" class="fab fa-researchgate" style="font-size:15px"target="_blank" title="ResearchGate"></i> ResearchGate</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</body>
+{% endfor %}
 {% endblock %}
+</html>

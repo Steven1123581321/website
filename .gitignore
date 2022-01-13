@@ -9,3 +9,4 @@ env/
 */migrations/
 *.json
 *static/
+*media/
