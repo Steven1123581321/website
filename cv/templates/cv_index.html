@@ -11,6 +11,21 @@
     <meta name="description" content="Content on math and operations research">
     <meta name="author" content="Steven Pauly">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            padding-top: 25px;
+            height: 0;
+        }
+        .wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
     {% for c in cv %}
@@ -18,7 +33,10 @@
             <h1>{{ c.welcome_title }}</h1>
             <p>{{ c.welcome_text | safe | linebreaks }}</p>
             <p>Do you have a question?<a href="mailto:s.pauly@slimstock.com"> Sent me an email!</a></p>
-            <p>{{ c.video | safe }}</p>
+            {% comment %} <p>{{ c.video | safe }}</p> {% endcomment %}
+            <div class="wrapper">
+                <iframe src="https://www.youtube.com/embed/AiikNCvni5E?autoplay=1&mute=1&enablejsapi=1" allow='autoplay'></iframe>
+            </div>
         </div>
         <div class="card" style="width: 18rem;" id="wrapperimage">
             <img src="{% static "/images/cv/avatar.png" %}" id="wrapperimage" class="rounded-circle float-right img-fluid" width="55%" alt="Responsive image">
