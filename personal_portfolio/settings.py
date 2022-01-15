@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "projects",
     "blog",
-    "cv",
+    "homepage",
     "ckeditor",
     "ckeditor_uploader",
 ]
@@ -54,7 +54,7 @@ CKEDITOR_CONFIGS = {
             ["mathjax", "widget", "lineutils", "dialog", "clipboard", "codesnippet"]
         ),
     },
-    "cv": {"toolbar": "full", "extraPlugins": "youtube"},
+    "homepage": {"toolbar": "full", "extraPlugins": "youtube"},
 }
 
 
