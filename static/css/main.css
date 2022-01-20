@@ -1,0 +1,36 @@
+nav {
+    font-family: 'Roboto Mono', monospace;
+}
+.form-inline{
+    display: none;
+}    
+.avatar {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 60%;
+}
+:root {
+    --clr-light: transparent;
+    --clr-dark: #00332a;
+    --clr-primary: #dbffa2;
+    --clr-secondary: #c3fcf2;
+    --clr-accent: #ff7750;
+
+    --foreground: var(--clr-dark);
+    --background: var(--clr-light);
+}
+.darkmode {
+    --clr-light: #fdffc4;
+    --clr-dark: #00332a;
+    --clr-primary: #202302;
+    --clr-secondary: #00100d;
+    --clr-accent: #ff7750;
+
+    --foreground: var(--clr-light);
+    --background: var(--clr-dark);
+}
+body {
+    background: var(--background);
+    color: var(--foreground);
+}
