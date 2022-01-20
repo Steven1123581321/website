@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Homepage </title>
+    <link rel="stylesheet" type="text/css" href="{% static "/css/homepage.css" %}">
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Steven Pauly, inventory, optimization, operations research, HTML, CSS, JavaScript">
+    <meta name="description" content="Content on math and operations research">
+    <meta name="author" content="Steven Pauly">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="text">
+        <h1>Welcome!</h1>
+        <p>Loremba ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt, enim non pharetra porttitor, risus odio pretium massa, sed sodales libero augue a quam. Sed auctor nisi maximus dignissim auctor. Suspendisse potenti. Nulla vel quam tempor, pretium leo sit amet, scelerisque turpis. Cras a erat at metus sollicitudin condimentum ut ut ex. Aenean quis imperdiet nisl. Donec non nunc vitae nunc semper feugiat nec vel dui. Nam consectetur enim non enim vulputate, ac varius urna lobortis. Morbi bibendum laoreet purus quis interdum. Mauris dapibus erat quis mollis molestie. Ut neque orci, tempor porta felis sit amet, dapibus auctor ligula. Maecenas semper, mi vitae aliquet vestibulum, sem nisl mollis dolor, quis dapibus urna turpis vel sapien. Curabitur volutpat nulla ut mauris mollis blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla suscipit et sapien nec pharetra. Nam ultrices ornare neque, porttitor commodo enim cursus nec. Nullam porttitor bibendum lobortis. Sed tincidunt vestibulum quam, ac lobortis leo pharetra non. Sed sagittis suscipit odio ornare molestie. Aenean et lorem id lorem facilisis tincidunt ut vitae nulla. Sed hendrerit rutrum diam. Quisque finibus venenatis sapien sed ultrices. Nam suscipit nisl leo, congue efficitur lacus scelerisque sit amet. Integer pharetra leo ac pellentesque bibendum.</p>
+        <p>Do you have a question?<a href="mailto:s.pauly@slimstock.com"> Sent me an email!</a></p>
+        {% comment %} <p>{{ c.video | safe }}</p> {% endcomment %}
+        <div class="wrapper">
+            <iframe src="https://www.youtube.com/embed/AiikNCvni5E?autoplay=1&mute=1&enablejsapi=1" allow='autoplay'></iframe>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;" id="wrapperimage">
+        <img src="{% static "/images/homepage/avatar.png" %}" id="wrapperimage" class="rounded-circle float-right img-fluid" width="55%" alt="Responsive image">
+    <div class="cardstyle" style="width: 18rem;" id="wrappertext">
+        <div class="animated bounceInUp">
+            <div class="card-body" id="float-right">
+                <h5 class="card-title">Steven Pauly</h5>
+                <p class="card-text">Research Scientist</p><br>
+                <ul>
+                    <li><a href="https://github.com/Steven1123581321" class="fab fa-github" style="font-size:15px" target="_blank" title="Github"></i> Github page</a></li>
+                    <li><a href="https://linkedin.com/in/steven-pauly-80760b48" class="fab fa-Linkedin" style="font-size:15px" target="_blank" title="Linkedin"></i> Linkedin</a></li>
+                    <li><a href="https://www.researchgate.net/profile/Steven-Pauly" class="fab fa-researchgate" style="font-size:15px"target="_blank" title="ResearchGate"></i> ResearchGate</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
+</html>

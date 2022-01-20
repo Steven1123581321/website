@@ -8,5 +8,6 @@ env/
 *.docx
 */migrations/
 *.json
-*static/
+*static/mathjax
+*static/youtube
 *media/
